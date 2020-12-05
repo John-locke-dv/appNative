@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import ButtonWithBackground from '../src/ButtonWithBackground';
+import React, {Component,} from 'react';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { TouchableOpacity, TextInput, source } from 'react-native-gesture-handler';
+
 
 
 
@@ -29,45 +29,75 @@ export class HomeScreen extends Component {
 
     render(){
         return(
+ 
+          <View  style = {styles.containere}>
+          {this.state.loading || !this.state.person ? (
             
-            <div>
-      {this.state.loading || !this.state.person ? (
-        
-      <div align = 'center'>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <button onClick = {this.handlerClick} style = {{ fontStyle: 'Roboto', width: '20%', height: '3em', borderWidth: 1, borderRadius: 20, backgroundColor: 'black', color: 'white'}}> Obtener persona Random </button>
-        </div>
-      ) : (
-      <div align = 'center'>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div style = {{border: '1em' , width: '20%', borderRadius: 20, backgroundColor: '#222221'}}> 
-        <div style = {{ fontSize: 18, fontStyle: 'arial', color: "white"}}>{this.state.person.name.title}</div>
-      <div style = {{ fontSize: 20, fontStyle: 'roboto', color: "white"}}>{this.state.person.name.first} {this.state.person.name.last}</div> 
-      <div style = {{ fontSize: 20, fontStyle: 'roboto', color: "white"}}>{this.state.person.dob.age}</div>
-        <div style = {{ fontSize: 20, fontStyle: 'roboto', color: "white"}}>{this.state.person.location.country}</div>
-        <br></br>
-        <img style = {{borderRadius: 10}} src={this.state.person.picture.large} />
-        </div>
-      </div>
-      )}
-      <br></br>
-      <br></br>
-    </div>
+          <Text >
+
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+           
+
+
+    
+            
+            <Button width= '30%'
+              height= '5em'
+              borderWidth= '2em'
+              borderRadius= '30'
+              backgroundColor= 'black'
+              color= 'black' title="Obtener persona random" onPress={this.handlerClick}
+            />
+            </Text>
+          ) : (
+
+          
+          <Text style = {styles.pepe}>
+       
+          <Text style = {styles.api}>
+
+            <Text >
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            {'\n'}
+            <Text>{this.state.person.name.title}</Text>
+            {'\n'}
+            <Text>{this.state.person.name.first} {this.state.person.name.last}</Text> 
+            {'\n'}
+            <Text>{this.state.person.dob.age}</Text>
+            {'\n'}
+            <Text> {this.state.person.location.country}</Text>
+            {'\n'}
+
+            
+
+            </Text>
+         
+          </Text>
+          <Image  style = {styles.imagen} source={{uri:this.state.person.picture.thumbnail}} />
+          </Text>
+             
+          )}
+
+        </View>
         );
     }
 
@@ -82,10 +112,32 @@ export class HomeScreen extends Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#black',
+    containere: {
+      
       alignItems: 'center',
-      justifyContent: 'center',
+      textAlign: 'center',
+      alignContent: 'center',
     },
+    api: {
+      borderRadius: 20,
+      textAlign: 'center',
+      fontFamily: 'Roboto',
+      fontSize: 20,
+      color: 'black',
+    },
+
+    imagen: {
+      alignSelf: 'center',
+      height: 150,
+      width: 150,
+      borderWidth: 1,
+      borderRadius: 75
+    },
+
+    pepe: {
+      height: 1000
+    }
+   
+
+
   });
